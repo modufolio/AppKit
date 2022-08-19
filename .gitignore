@@ -1,0 +1,60 @@
+#-------------------------
+# Composer
+#-------------------------
+vendor/
+
+#-------------------------
+# Node.js
+#-------------------------
+
+node_modules/
+
+
+#-------------------------
+# IDE / Development Files
+#-------------------------
+
+# Modules Testing
+_modules/*
+
+# phpenv local config
+.php-version
+
+# Jetbrains editors (PHPStorm, etc)
+.idea/
+*.iml
+
+# Netbeans
+nbproject/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+.nb-gradle/
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+.phpintel
+/api/
+
+# Visual Studio Code
+.vscode/
+
+/results/
+/phpunit*.xml
+/.phpunit.*.cache
+
+env
+*.cache
+/node_modules/
+/docs/
+/.tinkerwell/
+/package-lock.json
+writable/database/storage.db
+*.db
