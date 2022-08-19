@@ -58,3 +58,28 @@ env
 /package-lock.json
 writable/database/storage.db
 *.db
+
+
+# Site
+# ---------------
+
+/site/config/*
+!/site/config/index.html
+
+/site/layouts/*
+!/site/layouts/index.html
+
+/site/snippets/*
+!/site/snippets/index.html
+
+/site/templates/*
+!/site/templates/index.html
+
+/site/views/*
+!/site/views/index.html
+
+# Temporary files
+# ---------------
+
+/storage/*
+!/storage/index.html
