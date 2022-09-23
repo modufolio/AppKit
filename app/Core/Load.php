@@ -2,12 +2,25 @@
 
 namespace App\Core;
 
+use Modufolio\Toolkit\Config;
+
 class Load
 {
-    public static function config(string $file): array
+    public static function config(string $file, string $key = '', bool $setConfig = false): array
     {
-        $config = require_once Roots::CONFIG . $file . '.php';
-        return is_array($config) ? $config : [];
+        $config = include Roots::CONFIG . DS . $file;
+        $config = is_array($config) ? $config : [];
+        if($setConfig) {
+            Config::set($key, $config);
+        }
+        return $config;
+    }
+
+    public static function routes(string $file): array
+    {
+        $routes = include Roots::ROUTES . DS . $file;
+        $routes = is_array($routes) ? $routes : [];
+        return $routes;
     }
 
 

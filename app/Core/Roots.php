@@ -5,12 +5,12 @@ namespace App\Core;
 class Roots
 {
     CONST BASE = BASE_DIR . DS;
-    CONST SITE = self::BASE . 'site' . DS;
-    CONST APP  = self::BASE . 'app' . DS;
-    CONST CORE = self::BASE . 'core' . DS;
-    CONST STORAGE  = self::BASE . 'storage' . DS;
-    CONST CONFIG = self::SITE. 'config' . DS;
-
+    CONST SITE = self::BASE . 'site';
+    CONST APP  = self::BASE . 'app';
+    CONST CORE = self::BASE . 'core';
+    CONST ROUTES = self::BASE . 'routes';
+    CONST STORAGE  = self::BASE . 'storage';
+    CONST CONFIG = self::SITE. DS. 'config';
 
     CONST ERRORS = self::SITE.  'system';
     CONST VIEWS = self::BASE . 'site/views';

@@ -4,8 +4,6 @@ namespace App\Core;
 
 use Modufolio\Http\Response;
 use Modufolio\Http\Router as Router;
-use Modufolio\Http\Server;
-use Modufolio\Toolkit\Config;
 use Modufolio\Toolkit\Timer;
 use Modufolio\Traits\Singleton;
 use Throwable;
@@ -24,12 +22,20 @@ class App
 
     protected array $options;
     protected array $routes;
+    protected string $uri;
+    private string $method;
 
-    public function __construct()
+    public function __construct($config = [])
     {
-        $this->routes = Load::config('routes');
-        $this->options = Load::config('options');
-        Config::set($this->options);
+        $this->setup($config);
+    }
+
+    private function setup(array $setup): App
+    {
+        foreach ($setup as $key => $value) {
+            $this->{$key} = $value;
+        }
+        return $this;
     }
 
     /**
@@ -50,14 +56,12 @@ class App
      */
     public function Run(): string
     {
-        $uri = $_SERVER['argv'][1] ?? urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-
 
         if ($this->options['debug'] === true) {
             $this->registerErrorHandler();
         }
         try {
-            $call = $this->Io((new Router($this->routes))->call($uri, Server::cli() ? 'CLI' : $_SERVER['REQUEST_METHOD'] ?? 'GET'));
+            $call = $this->Io((new Router($this->routes))->call($this->uri, $this->method));
         } catch (\Exception $e) {
             if ($this->options['debug'] === true) {
                 throw $e;
