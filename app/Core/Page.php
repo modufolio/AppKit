@@ -9,7 +9,8 @@ class Page
 {
     public static function notFound(): string
     {
-        return (new Response(Tpl::load(Roots::ERRORS . DS . '404.php'),'text/html',404))->send();
+        $file = Roots::ERRORS . DS . '404.php';
+        return (new Response(Tpl::load($file ),'text/html',404))->send();
     }
 
 }

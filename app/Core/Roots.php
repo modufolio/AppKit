@@ -12,7 +12,7 @@ class Roots
     CONST STORAGE  = self::BASE . 'storage';
     CONST CONFIG = self::SITE. DS. 'config';
 
-    CONST ERRORS = self::SITE.  'system';
+    CONST ERRORS = self::SITE. DS . 'system';
     CONST VIEWS = self::BASE . 'site/views';
     CONST SNIPPETS = self::BASE . 'site/snippets';
     const LAYOUTS = self::BASE . 'site/layouts';

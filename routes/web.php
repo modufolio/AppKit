@@ -8,9 +8,10 @@ return   [
         }
     ],
     [
-        'pattern' => '/test',
+        'pattern' => '/version',
         'action'  => function() {
-            return 'Hello AppKit';
+
+            return app()::VERSION;
         }
     ],
 
