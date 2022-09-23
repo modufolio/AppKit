@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use Exception;
 use Modufolio\Http\Response;
 use Modufolio\Http\Router as Router;
 use Modufolio\Toolkit\Timer;
@@ -62,7 +63,7 @@ class App
         }
         try {
             $call = $this->Io((new Router($this->routes))->call($this->uri, $this->method));
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             if ($this->options['debug'] === true) {
                 throw $e;
             }
@@ -71,7 +72,7 @@ class App
         return $call;
     }
 
-    private function registerErrorHandler()
+    private function registerErrorHandler(): void
     {
         $whoops = new Run;
         $whoops->pushHandler(new PrettyPageHandler);
