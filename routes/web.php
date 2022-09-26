@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 return   [
     [
         'pattern' => '/',
@@ -12,6 +14,15 @@ return   [
         'action'  => function() {
 
             return app()::VERSION;
+        }
+    ],
+    [
+        'pattern' => '/users',
+        'action'  => function() {
+
+            $users = User::all();
+
+            return $users->toArray();
         }
     ],
 

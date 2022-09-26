@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use Exception;
+use Illuminate\Database\Capsule\Manager as Capsule;
 use Modufolio\Http\Response;
 use Modufolio\Http\Router as Router;
 use Modufolio\Toolkit\Timer;
@@ -29,6 +30,15 @@ class App
     public function __construct($config = [])
     {
         $this->setup($config);
+        $this->bootEloquent();
+    }
+
+    private function bootEloquent(): void
+    {
+        $capsule = new Capsule;
+        $capsule->addConnection($this->options['db']);
+        $capsule->setAsGlobal();
+        $capsule->bootEloquent();
     }
 
     private function setup(array $setup): App
