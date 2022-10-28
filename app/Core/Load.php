@@ -6,12 +6,14 @@ use Modufolio\Toolkit\Config;
 
 class Load
 {
-    public static function config(string $file, string $key = '', bool $setConfig = false): array
+    public static function config(string $file, bool $setConfig = false): array
     {
         $config = include Roots::CONFIG . DS . $file;
         $config = is_array($config) ? $config : [];
-        if($setConfig) {
-            Config::set($key, $config);
+        if($setConfig && !empty($config)) {
+            foreach ($config as $key => $value) {
+                Config::set($key, $value);
+            }
         }
         return $config;
     }

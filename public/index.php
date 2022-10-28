@@ -19,7 +19,7 @@ $app = new App([
     'uri' => $_SERVER['argv'][1] ?? $urlPath,
     'method' => $_SERVER['REQUEST_METHOD'] ?? 'GET',
     'routes' => str_starts_with($urlPath, '/api') ? Load::routes('api.php') : Load::routes('web.php'),
-    'options' => Load::config('options.php', 'options', true),
+    'options' => Load::config('options.php', true),
 ]);
 
 // Run the application

@@ -4,6 +4,7 @@ return [
     'debug' => true,
     'db' => [
         'driver'     => 'sqlite',
-        'database' => BASE_DIR .'/database/database.sqlite' #full path to file
+        'type'     => 'sqlite',
+        'database' => BASE_DIR .'/database/data.sqlite', #full path to file
     ],
 ];
